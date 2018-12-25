@@ -17,6 +17,10 @@ public class TextController : MonoBehaviour
     private int currentLine = 0;
     private int lastUpdateCharacter = -1;
 
+    private int changePanelNumber = 0;
+    public GameObject panelHouse;
+    public GameObject panelBook;
+
     // 文字の表示が完了しているかどうか
     public bool IsCompleteDisplayText
     {
@@ -31,6 +35,7 @@ public class TextController : MonoBehaviour
     void Update()
     {
         // 文字の表示が完了してるならクリック時に次の行を表示する
+        
         if (IsCompleteDisplayText)
         {
             if (currentLine < scenarios.Length && Input.GetMouseButtonDown(0))
@@ -41,6 +46,7 @@ public class TextController : MonoBehaviour
         else
         {
             // 完了してないなら文字をすべて表示する
+            
             if (Input.GetMouseButtonDown(0))
             {
                 timeUntilDisplay = 0;
@@ -63,5 +69,28 @@ public class TextController : MonoBehaviour
         timeElapsed = Time.time;
         currentLine++;
         lastUpdateCharacter = -1;
+
+        
+        PanelChange(changePanelNumber);
+        changePanelNumber++;
     }
+
+
+    void PanelChange(int changeNumber)
+    {
+        if (changeNumber == 5)
+        {
+            panelHouse.SetActive(false);
+            panelBook.SetActive(true);
+        }
+
+        if (changeNumber == 7)
+        {
+            panelHouse.SetActive(true);
+            panelBook.SetActive(false);
+        }
+    }
+
+
+
 }
