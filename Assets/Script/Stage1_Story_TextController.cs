@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextController : MonoBehaviour
+public class Stage1_Story_TextController : MonoBehaviour
 {
-
-
 
     public string[] scenarios;
     [SerializeField] Text uiText;
@@ -21,10 +19,9 @@ public class TextController : MonoBehaviour
     private int currentLine = 0;
     private int lastUpdateCharacter = -1;
 
+    private int imageChangeCounter = 0;
     public GameObject hekiga_suuhai;
     public GameObject hekiga_hanran;
-
-    private int changeCounter = 0;
 
     // 文字の表示が完了しているかどうか
     public bool IsCompleteDisplayText
@@ -32,12 +29,10 @@ public class TextController : MonoBehaviour
         get { return Time.time > timeElapsed + timeUntilDisplay; }
     }
 
-
     void Start()
     {
         SetNextLine();
     }
-
 
     void Update()
     {
@@ -66,6 +61,7 @@ public class TextController : MonoBehaviour
         }
     }
 
+
     void SetNextLine()
     {
         currentText = scenarios[currentLine];
@@ -74,26 +70,27 @@ public class TextController : MonoBehaviour
         currentLine++;
         lastUpdateCharacter = -1;
 
-        ImageChange(changeCounter);
-        changeCounter++;
+        ImageChange(imageChangeCounter);
+        imageChangeCounter++;
 
     }
 
-    void ImageChange(int changenumber)
+    void ImageChange(int changeNumber)
     {
-        if (changeCounter == 4)
+        if (changeNumber == 5)
         {
             hekiga_suuhai.SetActive(true);
         }
-        if (changeCounter == 6)
+        if (changeNumber == 8)
         {
             hekiga_hanran.SetActive(true);
         }
-        if (changeCounter == 10)
+        if (changeNumber == 12)
         {
             hekiga_hanran.SetActive(false);
             hekiga_suuhai.SetActive(false);
         }
+
 
     }
 
