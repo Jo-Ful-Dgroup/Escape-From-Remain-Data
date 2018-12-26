@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TextController : MonoBehaviour
 {
@@ -89,6 +90,13 @@ public class TextController : MonoBehaviour
             panelHouse.SetActive(true);
             panelBook.SetActive(false);
         }
+
+        if (changeNumber == 13)
+        {
+            SceneManager.LoadScene("Stage1_Story");
+        }
+
+
     }
 
 

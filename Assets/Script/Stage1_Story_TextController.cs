@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Stage1_Story_TextController : MonoBehaviour
 {
@@ -85,10 +86,14 @@ public class Stage1_Story_TextController : MonoBehaviour
         {
             hekiga_hanran.SetActive(true);
         }
-        if (changeNumber == 12)
+        if (changeNumber == 13)
         {
             hekiga_hanran.SetActive(false);
             hekiga_suuhai.SetActive(false);
+        }
+        if (changeNumber == 21)
+        {
+            SceneManager.LoadScene("Stage1_Queston");
         }
 
 
